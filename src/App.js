@@ -1,24 +1,27 @@
-import logo from "./logo.svg";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import Nav from "./components/Nav"; // Nav component imported
+import Home from "./pages/Home";
+import Company from "./pages/Company";
 import "./App.css";
+
+const AppContainer = styled.div`
+  text-align: center;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Reactddasd
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Nav /> {/* Nav component added */}
+      <AppContainer>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/company" element={<Company />} />
+          {/* Additional routes to be added */}
+        </Routes>
+      </AppContainer>
+    </Router>
   );
 }
 
